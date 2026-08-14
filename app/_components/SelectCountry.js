@@ -4,8 +4,10 @@ import { getCountries } from "@/public/_lib/data-service";
 
 async function SelectCountry({ defaultCountry, name, id, className }) {
   const countries = await getCountries();
+  console.log(countries[0].names.common);
   const flag =
-    countries.find((country) => country.name === defaultCountry)?.flag ?? "";
+    countries.find((country) => country.names.common === defaultCountry)?.flag
+      .emoji ?? "";
 
   return (
     <select
@@ -17,7 +19,10 @@ async function SelectCountry({ defaultCountry, name, id, className }) {
     >
       <option value="">Select country...</option>
       {countries.map((c) => (
-        <option key={c.name} value={`${c.name}%${c.flag}`}>
+        <option
+          key={c.names.common}
+          value={`${c.names.common}%${c.flag.emoji}`}
+        >
           {c.name}
         </option>
       ))}
