@@ -4,29 +4,30 @@ import { getCountries } from "@/public/_lib/data-service";
 
 async function SelectCountry({ defaultCountry, name, id, className }) {
   const countries = await getCountries();
-  console.log(countries[0].names.common);
   const flag =
     countries.find((country) => country.names.common === defaultCountry)?.flag
       .emoji ?? "";
 
   return (
-    <select
-      name={name}
-      id={id}
-      // Here we use a trick to encode BOTH the country name and the flag into the value. Then we split them up again later in the server action
-      defaultValue={`${defaultCountry}%${flag}`}
-      className={className}
-    >
-      <option value="">Select country...</option>
-      {countries.map((c) => (
-        <option
-          key={c.names.common}
-          value={`${c.names.common}%${c.flag.emoji}`}
-        >
-          {c.name}
-        </option>
-      ))}
-    </select>
+    <>
+      <select
+        name={name}
+        id={id}
+        // Here we use a trick to encode BOTH the country name and the flag into the value. Then we split them up again later in the server action
+        defaultValue={`${defaultCountry}%${flag}`}
+        className={className}
+      >
+        <option value="">Select country...</option>
+        {countries.map((c) => (
+          <option
+            key={c.names.common}
+            value={`${c.names.common}%${c.flag.emoji}`}
+          >
+            {c.names.common}
+          </option>
+        ))}
+      </select>
+    </>
   );
 }
 

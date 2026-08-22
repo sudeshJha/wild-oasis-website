@@ -137,13 +137,13 @@ export async function getSettings() {
   return data;
 }
 
-export async function getCountries() {
+async function getCountriesByLimit(limit, offset) {
   try {
     const res = await fetch(
-      "https://api.restcountries.com/countries/v5?limit=1&response_fields=names.common,flag.emoji&pretty",
+      `https://api.restcountries.com/countries/v5?limit=${limit}&offset=${offset}response_fields=names.common,flag.emoji&pretty`,
       {
         headers: {
-          Authorization: "Bearer rc_live_3299aa9bcfa04a6b98d0b1ac5e9bc743",
+          Authorization: "rc_live_3299aa9bcfa04a6b98d0b1ac5e9bc743",
         },
       },
     );
@@ -152,6 +152,14 @@ export async function getCountries() {
   } catch {
     throw new Error("Could not fetch countries");
   }
+}
+
+export async function getCountries() {
+  let countries = await getCountriesByLimit(100, 0);
+  countries = [...countries, ...(await getCountriesByLimit(100, 100))];
+  countries = [...countries, ...(await getCountriesByLimit(54, 200))];
+
+  return countries;
 }
 
 /////////////
