@@ -1,7 +1,4 @@
-import {
-  getBookedDatesByCabinId,
-  getSettings,
-} from "@/public/_lib/data-service";
+import { getBookedDatesByCabinId, getSettings } from "@/app/_lib/data-service";
 import DateSelector from "./DateSelector";
 import ReservationForm from "./ReservationForm";
 

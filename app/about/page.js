@@ -1,6 +1,6 @@
 import Image from "next/image";
 import img2 from "@/public/about-2.jpg";
-import { getCabins } from "@/public/_lib/data-service";
+import { getCabins } from "@/app/_lib/data-service";
 
 export const metadata = {
   title: "About",
