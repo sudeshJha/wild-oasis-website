@@ -70,7 +70,7 @@ function ReservationCard({ booking }) {
         </div>
       </div>
 
-      <div className="flex flex-col border-l border-primary-800 w-[100px]">
+      <div className="flex flex-col border-l border-primary-800 w-[100px] justify-center items-center">
         {!isPast(startDate) ? (
           <>
             <Link
@@ -82,7 +82,11 @@ function ReservationCard({ booking }) {
             </Link>
             <DeleteReservation bookingId={id} />
           </>
-        ) : null}
+        ) : (
+          <p className="mx-auto text-center px-4 text-primary-700">
+            Actions not allowed
+          </p>
+        )}
       </div>
     </div>
   );
