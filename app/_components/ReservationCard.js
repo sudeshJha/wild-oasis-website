@@ -83,7 +83,7 @@ function ReservationCard({ booking }) {
             <DeleteReservation bookingId={id} />
           </>
         ) : (
-          <p className="mx-auto text-center px-4 text-primary-700">
+          <p className="mx-auto text-center px-4 text-primary-700 select-none cursor-not-allowed">
             Actions not allowed
           </p>
         )}
