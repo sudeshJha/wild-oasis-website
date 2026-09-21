@@ -3,12 +3,11 @@
 import { useReservation } from "./ReservationContext";
 
 function ReservationForm({ cabin, user }) {
-  // CHANGE
   const { maxCapacity } = cabin;
   const { range } = useReservation();
 
   return (
-    <div className="scale-[1.01]">
+    <div className="">
       <div className="bg-primary-800 text-primary-300 px-16 py-2 flex justify-between items-center">
         <p>Logged in as</p>
 
